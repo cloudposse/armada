@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# this script path
+ARMADA_DIR=$(realpath $(dirname $0))
+
+. functions
+
+repository=$1
+branch=$2
+revision=$3
+username=$4
+fingerprint=$5
+
+assert repository
+assert branch
+assert revision
+assert username
+assert fingerprint
+
+include expander
+include builder
+include deployer
+
+#clean
+
+

@@ -1,0 +1,21 @@
+# create build directory
+#GIT_DIR=$(mktemp -d -t "$username_$repository_$revision")
+GIT_DIR="/tmp/test.$$"
+
+mkdir -p "$GIT_DIR"
+
+echo "Using git dir: $GIT_DIR"
+
+# change to work dir
+cd $GIT_DIR
+
+# tar extract
+tar xv
+
+# load env (.armada)
+# FIXME: insecure
+if [ -f "$GIT_DIR/.armada" ]; then
+  . "$GIT_DIR/.armada"
+fi
+
+

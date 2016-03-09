@@ -1,0 +1,30 @@
+function include() {
+  local file=$1
+  if [ -f "$ARMADA_DIR/$file" ]; then
+    . "$ARMADA_DIR/$file"
+  else
+    echo "ERROR: $file not found"
+    exit 1
+  fi
+}
+
+function clean() {
+  if [ -n "$GIT_DIR" ]; then
+    if [ -d "$GIT_DIR" ]; then
+      echo "Cleaning up $GIT_DIR"
+      rm -rf "$GIT_DIR"
+    fi
+  fi
+}
+
+function assert() {
+  local var=$1
+  local val=$(eval echo \$$var)
+  if [ -z "$val" ]; then
+    echo "$var cannot be empty"
+    clean
+    exit 1
+  fi
+}
+
+

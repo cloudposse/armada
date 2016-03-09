@@ -1,0 +1,11 @@
+if [ -n "$FLEET_UNITS" ]; then
+  if [ -x /usr/bin/fleetctl ] && [ -S /run/fleet.sock ]; then
+    fleetctl stop "${FLEET_UNITS[@]}"
+    fleetctl start "${FLEET_UNITS[@]}"
+  else
+    echo "Fleet deployment not enabled"
+    exit 1
+  fi
+fi
+
+

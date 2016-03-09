@@ -39,7 +39,7 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata && \
     ln -s /home/docker /var/lib/docker
 
-ADD app /armada
+ADD app/ /armada
 ADD start /start
 
 EXPOSE 22
