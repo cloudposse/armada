@@ -1,6 +1,6 @@
 # create build directory
 #GIT_DIR=$(mktemp -d -t "$username_$repository_$revision")
-GIT_DIR="/tmp/test.$$"
+GIT_DIR="/tmp/$username_$repository_$revision.$$"
 
 mkdir -p "$GIT_DIR"
 

@@ -9,7 +9,7 @@ ENV PATH "$PATH:/armada"
 ENV TERM xterm
 
 ENV DOCKER_GID 233
-ENV DOCKER_CACHE_PATH /var/lib/docker
+ENV DOCKER_CACHE_PATH /tmp/docker
 
 # Locale specific
 ENV LANGUAGE en_US.UTF-8
