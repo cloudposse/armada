@@ -1,8 +1,8 @@
 #!/bin/bash
 
-for git_user in $GIT_USERS; do 
+for git_user in ${GIT_USERS//,/ }; do 
   gitreceive init "$git_user"
-  for github_user in $GITHUB_USERS; do 
+  for github_user in ${GITHUB_USERS//,/ }; do 
     gitreceive add-github-user "$git_user" "$github_user"
   done
 done
