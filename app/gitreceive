@@ -89,7 +89,7 @@ EOF
 
 # When a repo receives a push, its pre-receive hook is triggered. This in turn executes `gitreceive hook', which is a
 # wrapper around this function. The repo is updated and its working tree tarred so that it can be piped to
-# `/opt/bin/receiver'. 
+# `/armada/receiver'. 
 trigger_receiver() {
   declare repo="$1" user="$2" fingerprint="$3" home_dir="$4"
   # oldrev, newrev, refname are a feature of the way in which Git executes the pre-receive hook.
@@ -99,7 +99,7 @@ trigger_receiver() {
     # Only run this script for the master branch. You can remove this
     # if block if you wish to run it for others as well.
     #[[ "$refname" == "refs/heads/master" ]] && \
-      git archive "$newrev" | "/opt/bin/receiver" "$repo" "$branch" "$newrev" "$user" "$fingerprint"
+      git archive "$newrev" | "/armada/receiver" "$repo" "$branch" "$newrev" "$user" "$fingerprint"
   done
 }
 
