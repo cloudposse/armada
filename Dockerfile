@@ -2,16 +2,10 @@ FROM ubuntu:14.04
 
 MAINTAINER Erik Osterman "e@osterman.com"
 
-ENV PATH $PATH:/opt/bin
-
-ADD bin/ /opt/bin
-
-MAINTAINER Erik Osterman "e@osterman.com"
-
 # System ENV
 ENV TIMEZONE Etc/UTC
 ENV DEBIAN_FRONTEND noninteractive
-ENV PATH "$PATH:/armada:/usr/local/bin"
+ENV PATH "$PATH:/armada"
 ENV TERM xterm
 
 # Locale specific
