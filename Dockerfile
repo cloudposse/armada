@@ -23,7 +23,6 @@ ENV GITHUB_USERS=
 
 USER root
 
-# ENV USE_DIND false
 #    (curl -sSL https://get.docker.com/ | sh) && \ 
 
 RUN apt-get update && \
