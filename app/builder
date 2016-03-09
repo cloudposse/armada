@@ -18,9 +18,9 @@ DOCKER_FILE="Dockerfile"
 DOCKER_ARGS=(
     run 
       --rm 
-      --privileged 
       -v "$DOCKER_APP_PATH:/app:ro"
       -e "DOCKER_IMAGE=$DOCKER_IMAGE"
+      -e "DOCKER_HOST=$DOCKER_HOST"
       -e "DOCKER_DAEMON_ARGS=$DOCKER_DAEMON_ARGS"
       $DOCKER_BUILDER
       $DOCKER_URI
