@@ -3,7 +3,7 @@
 # this script path
 ARMADA_DIR=$(realpath $(dirname $0))
 
-. functions
+. "$ARMADA_DIR/functions"
 
 repository=$1
 branch=$2
