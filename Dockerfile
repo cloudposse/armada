@@ -5,11 +5,11 @@ MAINTAINER Erik Osterman "e@osterman.com"
 # System ENV
 ENV TIMEZONE Etc/UTC
 ENV DEBIAN_FRONTEND noninteractive
-ENV PATH "$PATH:/armada"
+ENV PATH "$PATH:/armada:/usr/local/bin"
 ENV TERM xterm
 
 ENV DOCKER_GID 233
-ENV DOCKER_CACHE_PATH /tmp/docker
+ENV DOCKER_HOST=
 
 # Locale specific
 ENV LANGUAGE en_US.UTF-8
