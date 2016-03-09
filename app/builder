@@ -28,5 +28,5 @@ DOCKER_ARGS=(
       $DOCKER_URI
     )
 
-echo docker "${DOCKER_ARGS[@]}"
+docker "${DOCKER_ARGS[@]}"
 
