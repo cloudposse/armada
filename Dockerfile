@@ -8,12 +8,15 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PATH "$PATH:/armada"
 ENV TERM xterm
 
+ENV DOCKER_GID 233
+
 # Locale specific
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 # Git 
+ENV GIT_USER_GROUPS docker
 ENV GIT_USERS=
 ENV GITHUB_USERS= 
 
@@ -37,7 +40,8 @@ RUN apt-get update && \
     dpkg-reconfigure locales && \
     echo "$TIMEZONE" > /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
-    ln -s /home/docker /var/lib/docker
+    ln -s /home/docker /var/lib/docker && \
+    groupadd -g $DOCKER_GID docker
 
 ADD app/ /armada
 ADD start /start
