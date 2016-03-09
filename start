@@ -7,9 +7,9 @@ for git_user in $GIT_USERS; do
   done
 done
 
-if [ "$USE_DIND" == "true" ]; then
-  dind
-fi
+#if [ "$USE_DIND" == "true" ]; then
+#  dind
+#fi
 
 echo "Starting SSH..."
 exec /usr/sbin/sshd -D -e

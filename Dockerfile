@@ -11,7 +11,7 @@ MAINTAINER Erik Osterman "e@osterman.com"
 # System ENV
 ENV TIMEZONE Etc/UTC
 ENV DEBIAN_FRONTEND noninteractive
-ENV PATH "$PATH:/opt/bin:/usr/local/bin"
+ENV PATH "$PATH:/armada:/usr/local/bin"
 ENV TERM xterm
 
 # Locale specific
@@ -45,7 +45,7 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata && \
     ln -s /home/docker /var/lib/docker
 
-ADD bin /opt/bin
+ADD app /armada
 ADD start /start
 
 EXPOSE 22
