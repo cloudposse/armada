@@ -172,4 +172,9 @@ main() {
   esac
 }
 
-[[ "$0" == "$BASH_SOURCE" ]] && main $@
+if [[ "$0" == "$BASH_SOURCE" ]]; then
+  main $@
+else
+  echo "ERROR: use an absolute path to call $0"
+  exit 1
+fi
