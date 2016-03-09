@@ -7,10 +7,6 @@ for git_user in ${GIT_USERS//,/ }; do
   done
 done
 
-#if [ "$USE_DIND" == "true" ]; then
-#  dind
-#fi
-
 # Pass select variariables into the global environment
 declare|grep -E '^(DOCKER_HOST)=' >> /etc/environment
 
