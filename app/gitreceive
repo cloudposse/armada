@@ -139,11 +139,15 @@ main() {
     # Called by the 'forced command' when the git user first authenticates against the server
     run)
       declare user="$2" fingerprint="$3"
+      if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
+        echo "ERROR: shell access not allowed"
+        exit 1
+      fi
       export RECEIVE_USER="$user"
       export RECEIVE_FINGERPRINT="$fingerprint"
       export RECEIVE_REPO="$(echo "$SSH_ORIGINAL_COMMAND" | parse_repo_from_ssh_command)"
-      if [ ! $RECEIVE_REPO ]; then
-        echo "ERROR: shell access not allowed"
+      if [ -z "$RECEIVE_REPO" ]; then
+        echo "ERROR: unable to determine repo"
         exit 1
       fi
       local repo_path="$GITHOME/$RECEIVE_REPO"

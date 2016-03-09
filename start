@@ -11,6 +11,9 @@ done
 #  dind
 #fi
 
+# Pass select variariables into the global environment
+declare|grep -E '^(DOCKER_HOST)=' >> /etc/environment
+
 echo "Starting SSH..."
 exec /usr/sbin/sshd -D -e
 
