@@ -22,11 +22,11 @@ ENV LC_ALL en_US.UTF-8
 # Git 
 ENV GIT_USERS=
 ENV GITHUB_USERS= 
-ENV USE_DIND false
 
 USER root
 
-# FIXME I should really make a more minimal vps instance and inherit from it =)
+# ENV USE_DIND false
+#    (curl -sSL https://get.docker.com/ | sh) && \ 
 
 RUN apt-get update && \
     apt-get install -y \
@@ -36,13 +36,9 @@ RUN apt-get update && \
                     curl \
                     git \
                     vim && \
-    (curl -sSL https://get.docker.com/ | sh) && \ 
     mkdir -p /var/run/sshd && \
     sed -i 's:session\s*required\s*pam_loginuid.so:session optional pam_loginuid.so:g' /etc/pam.d/sshd && \
     ([ -f /etc/ssh/ssh_host_rsa_key ] || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key)  && \
-    mkdir -p /root/.ssh/ -m 0700 && \
-    echo '\nHost github.com\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null' >> /root/.ssh/config && \
-    echo '\nHost gitlab.com\n  StrictHostKeyChecking no\n  UserKnownHostsFile=/dev/null' >> /root/.ssh/config  && \
     locale-gen $LANGUAGE && \
     dpkg-reconfigure locales && \
     echo "$TIMEZONE" > /etc/timezone && \
