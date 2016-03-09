@@ -1,0 +1,16 @@
+#!/bin/bash
+
+for git_user in $GIT_USERS; do 
+  gitreceive init "$git_user"
+  for github_user in $GITHUB_USERS; do 
+    gitreceive add-github-user "$git_user" "$github_user"
+  done
+done
+
+if [ "$USE_DIND" == "true" ]; then
+  dind
+fi
+
+echo "Starting SSH..."
+exec /usr/sbin/sshd -D -e
+
