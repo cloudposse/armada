@@ -29,3 +29,5 @@ DOCKER_ARGS=(
 
 docker "${DOCKER_ARGS[@]}"
 
+# FIXME tutum/builder screws up ansi
+echo -en "\x1b[0m"
