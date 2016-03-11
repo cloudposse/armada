@@ -139,7 +139,7 @@ main() {
     # Called by the 'forced command' when the git user first authenticates against the server
     run)
       declare user="$2" fingerprint="$3"
-      if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
+      if [ -z "${SSH_ORIGINAL_COMMAND:-}" ]; then
         echo "ERROR: shell access not allowed"
         exit 1
       fi
