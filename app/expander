@@ -12,10 +12,4 @@ cd $GIT_DIR
 # tar extract
 tar xv
 
-# load env (.armada)
-# FIXME: insecure
-if [ -f "$GIT_DIR/.armada" ]; then
-  . "$GIT_DIR/.armada"
-fi
-
 

@@ -17,6 +17,12 @@ assert revision
 assert username
 assert fingerprint
 
+echo "repository=$repository"
+echo "branch=$branch"
+echo "revision=$revision"
+echo "username=$username"
+echo "fingerprint=$fingerprint"
+
 include expander
 include builder
 include deployer
