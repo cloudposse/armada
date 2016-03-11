@@ -6,6 +6,8 @@ else
   DOCKER_TAG="$branch"
 fi
 
+# Tutum/builder assumes you HAVE TO have a username to push images
+DOCKER_USERNAME=${DOCKER_USERNAME:-$(whoami)}
 DOCKER_REGISTRY="registry.docker"
 DOCKER_IMAGE="$repository:$DOCKER_TAG"
 DOCKER_BUILDER="cloudposse/builder:latest"
@@ -20,6 +22,7 @@ DOCKER_ARGS=(
       --rm 
        --privileged=true
       -v "$DOCKER_APP_PATH:/app:ro"
+      -e "USERNAME=$DOCKER_USERNAME"
       -e "DOCKER_IMAGE=$DOCKER_IMAGE"
       -e "DOCKER_HOST=$DOCKER_HOST"
       -e "DOCKER_DAEMON_ARGS=$DOCKER_DAEMON_ARGS"
