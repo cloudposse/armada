@@ -11,7 +11,7 @@ function include() {
 function clean() {
   if [ -n "$GIT_DIR" ]; then
     if [ -d "$GIT_DIR" ]; then
-      echo "Cleaning up $GIT_DIR"
+      echo "Cleaning up"
       rm -rf "$GIT_DIR"
     fi
   fi
