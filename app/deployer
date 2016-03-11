@@ -1,5 +1,5 @@
 if [ -x /usr/bin/fleetctl ] && [ -S /run/fleet.sock ]; then
-  units=$(fleetctl list-units -no-legend -fields=unit | grep -E "^$namespace\b")
+  units=$(fleetctl list-units -no-legend -fields=unit | grep -E "^$namespace[.@]")
   if [ -z "$units" ]; then
     echo "No fleet units to restart"
   else
