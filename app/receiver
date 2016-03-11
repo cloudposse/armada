@@ -32,3 +32,5 @@ include builder
 include deployer
 
 clean
+
+echo "SUCCESS"
