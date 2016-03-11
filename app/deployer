@@ -1,11 +1,18 @@
-if [ -n "$FLEET_UNITS" ]; then
-  if [ -x /usr/bin/fleetctl ] && [ -S /run/fleet.sock ]; then
-    fleetctl stop "${FLEET_UNITS[@]}"
-    fleetctl start "${FLEET_UNITS[@]}"
+if [ -x /usr/bin/fleetctl ] && [ -S /run/fleet.sock ]; then
+  units=$(fleetctl list-units -no-legend -fields=unit | grep -E "^$namespace\b")
+  if [ -z "$units" ]; then
+    echo "No fleet units to restart"
   else
-    echo "Fleet deployment not enabled"
-    exit 1
+    for unit in $units; do
+      echo "Restarting $unit"
+      fleetctl stop $unit
+      sleep 1
+      fleetctl start $unit
+    done
   fi
+else
+  echo "Fleet deployment not enabled"
+  exit 1
 fi
 
 

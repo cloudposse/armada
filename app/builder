@@ -27,6 +27,7 @@ DOCKER_ARGS=(
       $DOCKER_URI
     )
 
+echo "Building docker image for '$DOCKER_IMAGE' and pushing to registry://$DOCKER_REGISTRY"
 docker "${DOCKER_ARGS[@]}"
 
 # FIXME tutum/builder screws up ansi

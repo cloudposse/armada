@@ -4,12 +4,12 @@ GIT_DIR="/tmp/$username_$repository_$revision.$$"
 
 mkdir -p "$GIT_DIR"
 
-echo "Using git dir: $GIT_DIR"
+echo "Extracting git archive to $GIT_DIR"
 
 # change to work dir
 cd $GIT_DIR
 
 # tar extract
-tar xv
+tar x
 
 

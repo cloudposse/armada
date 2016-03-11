@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Processing git receive"
 # this script path
 ARMADA_DIR=$(realpath $(dirname $0))
 
@@ -17,11 +18,14 @@ assert revision
 assert username
 assert fingerprint
 
-echo "repository=$repository"
-echo "branch=$branch"
-echo "revision=$revision"
-echo "username=$username"
-echo "fingerprint=$fingerprint"
+namespace=$(echo $repository | cut -d/ -f1)
+
+echo " * namespace=$namespace"
+echo " * repository=$repository"
+echo " * branch=$branch"
+echo " * revision=$revision"
+echo " * username=$username"
+echo " * fingerprint=$fingerprint"
 
 include expander
 include builder
