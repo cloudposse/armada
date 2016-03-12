@@ -19,6 +19,7 @@ assert username
 assert fingerprint
 
 namespace=$(echo $repository | cut -d/ -f1)
+repository=${repository%%.git}
 
 echo " * namespace=$namespace"
 echo " * repository=$repository"
